@@ -3,4 +3,7 @@
 
 # Dataset
 data/
+map/
+population/
+
 LCDataDictionary.xlsx
