@@ -2,6 +2,6 @@
 .ipynb_checkpoints
 
 # Dataset
-data/
+data/*.csv
 
 LCDataDictionary.xlsx
