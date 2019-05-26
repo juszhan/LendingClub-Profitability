@@ -631,7 +631,7 @@ to attach them to the start of each source file to most effectively
 state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
-    LendingClub-Profitability: Analyzing credit risk of P2P loans using machine learning
+    LendingClub-Profitability: Analyzing Credit Risk of P2P loans
     Copyright (C) 2019  Justin Zhang
 
     This program is free software: you can redistribute it and/or modify
