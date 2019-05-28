@@ -4,6 +4,7 @@
 # Dataset
 data/
 !data/.gitkeep
+!data/processed/.gitkeep
 
 LCDataDictionary.xlsx
 
