@@ -13,7 +13,7 @@ Loans offered by LendingClub are a form unsecured debt like credit card debt.
 
 The [LendingClub 2016-2018 dataset](https://www.lendingclub.com/info/download-data.action) contains on average **114k** loans per quarter.
 
-Below are visualizations of dataset:
+Below are visualizations of the dataset:
 
 ![LendingClub 2016-2018 - Total Current Loan Amount Per State](assets/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;Per&#32;State.gif)
 
@@ -25,7 +25,7 @@ Since all loans have either a 36- or 60-month term, **Current** loans rollover q
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Verification&#32;Status&#32;Stacked&#32;Area&#32;Plot.png)
 
-Loan applications may provide income verification to help investers better understand risk. Verification statuses are defined below:  
+Loan applications may provide income verification to help investors better understand risk. Verification statuses are defined below:  
 - **Verified**: loan application submitted documents such as paystubs, W-2 forms, or other tax records to verify their income.
 - **Source Verified**: LendingClub electronically checked the loan applicant's income data through a third-party.
 
@@ -33,12 +33,52 @@ More information about income verification can be found [here](https://www.lendi
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Grade&#32;Stacked&#32;Area&#32;Plot.png)
 
-Loan grades range between A to G. Each grade is further categorized into five subgrades.   
+Loan grades range between **A** to **G**. Each grade is further categorized into five subgrades.   
 More information about how LendingClub calculates loan grade can be found [here](https://www.lendingclub.com/foliofn/rateDetail.action).
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Title&#32;Stacked&#32;Area&#32;Plot.png)
 
-Loans are categorized into **14** different titles/purposes.
+Loans are categorized into **14** different titles/purposes. 
+
+### Methodology
+
+The goal is to distinguish between **Fully Paid** or **Default**/**Charged Off** loans. Fully Paid will correspond to the positive class. Default/Charged Off will correspond to the negative class. Other loan statuses are omitted because we can't track the rollover. The same loan could be present in several quarters, which could skew the analysis.
+
+#### Preprocessing
+
+Below are the preprocessing steps:
+1. The quarterly loans from 2016 to 2018 are combined. We keep only the following **10** attributes: "loan_amnt", "int_rate", "term", "grade", "sub_grade", "installment", "annual_inc", "loan_status", "verification_status", and "purpose".
+2. Outliers were removed where annual income equaled 0 or greater than 1 million.
+3. Non-ordinal categorical variables were encoded into binary vectors e.g. verification status and purpose.
+4. Ordinal variables were encoded their numerical values e.g. grade and subgrade.
+
+In total, ~380k loans were Fully Paid, while ~108k loans were Default/Charged Off. 
+
+To maintain this ~3.5:1 loan ratio, **28k** Fully Paid loans and **8k** Default/Charged Off loans were randomly sampled and set aside as the **validation set**.
+
+**200k** loans were randomly sampled, evenly split between the postive and negative class. This will be our **training/test set**.
+
+#### Models
+
+Four classifers were selected, the latter two being ensemble classifiers:
+- SVC / Linear SVM
+- Decision Tree
+- Random Forest
+- Gradient Boost
+
+An 80/20 split was created for the training/test set.
+
+Since SVMs are sensitive to scaling, the data was scaled to [0, 1] using a MinMaxScaler.
+
+For the other classifiers, the data was scaled using StandardScaler though this step could be skipped. 
+
+Each model had its hyperparameters tuned using GridSearchCV/RandomSearchCV. Cross validation was set to 5. The classifers were evaluated using f1-score.
+
+The best classifer was retrained on the whole training set before scoring the test set on accuracy. 
+
+### Results
+
+
 
 ### Disclaimer
 
