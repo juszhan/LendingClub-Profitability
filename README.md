@@ -79,11 +79,12 @@ The best classifer was retrained on the whole training set before scoring the te
 ### Results
 
 Classification results are shown below:
-|                      | svm | decision_tree | random_forest | gradient_boosting |   
-|----------------------|-----|---------------|---------------|-------------------|   
-| train_score_f1       | 123 | 123           | 123           | 123               |   
-| test_score_acc       | 123 | 123           | 123           | 123               |   
-| validation_score_acc | 123 | 123           | 123           | 123               |   
+
+|                      | svm | decision_tree | random_forest | gradient_boosting |
+|----------------------|-----|---------------|---------------|-------------------|
+| train_score_f1       | 123 | 123           | 123           | 123               |
+| test_score_acc       | 123 | 123           | 123           | 123               |
+| validation_score_acc | 123 | 123           | 123           | 123               |
 
 The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was going to be Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
 
