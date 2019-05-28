@@ -1,3 +1,3 @@
-# LendingClub Profitability/res
+# LendingClub-Profitability/res
 
-This folder contains the graphs produced. Many of the graphs are unused, feel free to look around.
+Many graphs/charts in this folder are unused, feel free to look around.
