@@ -25,7 +25,7 @@ Since all loans have either a 36- or 60-month term, **Current** loans rollover q
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Verification&#32;Status&#32;Stacked&#32;Area&#32;Plot.png)
 
-Loan applications may provide income verification to help investors better understand risk. Verification statuses are defined below:  
+Loan applicants may provide income verification to help investors better understand risk. Verification statuses are defined below:  
 - **Verified**: loan application submitted documents such as paystubs, W-2 forms, or other tax records to verify their income.
 - **Source Verified**: LendingClub electronically checked the loan applicant's income data through a third-party.
 
@@ -111,7 +111,7 @@ We can amortize the ROI using a per dollar metric. Returns are normalized by ter
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Percent&#32;Positive&#32;In&#32;Confidence&#32;Threshold&#32;On&#32;Validation&#32;Set.png)
 
-We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset.
+We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset. Values above this horizontal red line represents the degree to which model selected loans that are Fully Paid above baseline loan ratio.
 
 ### Conclusion
 
