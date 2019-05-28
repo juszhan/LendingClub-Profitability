@@ -86,6 +86,12 @@ Classification results are shown below:
 | test_score_acc       | 123 | 123           | 123           | 123               |
 | validation_score_acc | 123 | 123           | 123           | 123               |
 
+Let's look at the SVM feature weights:
+
+![LendingClub 2016-2018 - SVM Feature Weights](res/Prediction/SVM&#32;-&#32;Feature&#32;Weights.png)
+
+No surprise that borrowers with a higher annual income are more weighted towards paying back their loan. The SVC also heavily weight loan grade and subgrade. The high numeric grade or subgrade corresponds to a low grade or subgrade rating. Grade 0 corresponds to grade A. 
+
 The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
 
 A confidence threshold = 0 means that we will invest in all available loans.   
