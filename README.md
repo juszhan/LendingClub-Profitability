@@ -116,9 +116,9 @@ We can also check for each confidence threshold what percentage of loans were ac
 
 ### Conclusion
 
-While we have shown the potential fesibility of LendingClub for an investor, futher backtesting should be employed. The results shown in the previous section do not account for external factors that could influence returns such as interest rate, employment rate, geopolitical events, and etc. These factors are important because loans offered by LendingClub are a form unsecured debt like credit card debt. When the economy weakens, unsecured debt is the first debt borrower stop repaying.
+While we have shown the potential fesibility of LendingClub for an investor, further back-testing should be employed. The results shown in the previous section do not account for external factors that could influence returns such as interest rate, employment rate, geopolitical events, and etc. These factors are important because loans offered by LendingClub are a form unsecured debt like credit card debt. When the economy weakens, unsecured debt is the first debt borrower stop repaying.
 
-In addition, the diversity and popularity of low cost ETFs provide investors with many investment options to consider. These ETFs also provide investors liquidity, which LendingClub does not. If an investor chooses to invest in LendingClub Notes, the money is tied until the end of the loan. Potential investors will need to consider this issue of liquidity.
+In addition, the diversity and popularity of low-cost ETFs provide investors with many investment options to consider. These ETFs also provide investors liquidity, which LendingClub does not. If an investor chooses to invest in LendingClub Notes, the money is tied until the end of the loan. Potential investors will need to carefully consider this issue of liquidity.
 
 The ROI shown in the Results section does not account for the dollar amount available to invest. Further strategies should account for this available capital and test for the diversification of Notes vs. selecting quality Notes.
 
