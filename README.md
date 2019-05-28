@@ -1,6 +1,6 @@
 # LendingClub Profitability
 
-Visualizing loans and building loan investment models
+Visualizing loans and building investment models
 
 
 ### What Is LendingClub?
@@ -56,11 +56,11 @@ In total, ~380k loans were Fully Paid, while ~108k loans were Default/Charged Of
 
 To maintain this ~3.5:1 loan ratio, **28k** Fully Paid loans and **8k** Default/Charged Off loans were randomly sampled and set aside as the **validation set**.
 
-**200k** loans were randomly sampled, evenly split between the postive and negative class. This will be our **training/test set**.
+**200k** loans were randomly sampled, evenly split between the positive and negative class. This will be our **training/test set**.
 
 #### Models
 
-Four classifers were selected, the latter two being ensemble classifiers:
+Four classifiers were selected, the latter two being ensemble classifiers:
 - SVC / Linear SVM
 - Decision Tree
 - Random Forest
@@ -72,9 +72,9 @@ Since SVMs are sensitive to scaling, the data was scaled to [0, 1] using a MinMa
 
 For the other classifiers, the data was scaled using StandardScaler though this step could be skipped. 
 
-Each model had its hyperparameters tuned using GridSearchCV/RandomSearchCV. Cross validation was set to 5. The classifers were evaluated using f1-score.
+Each model had its hyperparameters tuned using GridSearchCV/RandomSearchCV. Cross validation was set to 5. The classifiers were evaluated using f1-score.
 
-The best classifer was retrained on the whole training set before scoring the test set on accuracy. 
+The best classifier was retrained on the whole training set before scoring the test set on accuracy. 
 
 ### Results
 
@@ -89,7 +89,7 @@ Classification results are shown below:
 The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was going to be Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
 
 A confidence threshold = 0 means that we will invest in all available loans.   
-A confidence threshold = 0.5 means that we will invest in all available loans where confidence was greather than or equal to 50.
+A confidence threshold = 0.5 means that we will invest in all available loans where confidence was greater than or equal to 50.
 
 ![LendingClub 2016-2018 - Total Percentage of Loans Invested On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Total&#32;Percentage&#32;of&#32;Loans&#32;Invested&#32;On&#32;Validation&#32;Set.png)
 
