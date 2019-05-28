@@ -78,6 +78,42 @@ The best classifer was retrained on the whole training set before scoring the te
 
 ### Results
 
+Classification results are shown below:
+|                      | svm | decision_tree | random_forest | gradient_boosting |
+|----------------------|-----|---------------|---------------|-------------------|
+| train_score_f1       | 123 | 123           | 123           | 123               |
+| test_score_acc       | 123 | 123           | 123           | 123               |
+| validation_score_acc | 123 | 123           | 123           | 123               |
+
+The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was going to be Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
+
+A confidence threshold = 0 means that we will invest in all available loans.   
+A confidence threshold = 0.5 means that we will invest in all available loans where confidence was greather than or equal to 50.
+
+![LendingClub 2016-2018 - Total Percentage of Loans Invested On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Total&#32;Percentage&#32;of&#32;Loans&#32;Invested&#32;On&#32;Validation&#32;Set.png)
+
+As our confidence threshold approaches towards 1.0, the number of available loans for us to invest decreases.
+
+![LendingClub 2016-2018 - 5 Year Total ROI On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;5&#32;Year&#32;Total&#32;ROI&#32;On&#32;Validation&#32;Set.png)
+
+Since all loans have either a 36- or 60-month term, we can calculate the 5-year total return on investment (ROI) as **(total_return - capital_invested) / capital_invested**, where:
+- capital_invested = sum(loan_amnt)
+- For Fully Paid loans, total_return += installment * term.
+- For Default/Charged Off loans, total_return += -1 * loan amount.
+
+As we approach confidence threshold = 1.0, the ROI will be more sporadic and volatile because there's less available loans to invest. Eventually, no loans are invested because no loans satisfy the confidence threshold. 
+
+Keep in mind that calculation for the 5-year total ROI fully invests in each loan. This is important because the loan amount will vary for each loan.
+
+![LendingClub 2016-2018 - Current Loan Amount By Grade](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Amortized&#32;Per&#32;Dollar&#32;Annual&#32;ROI&#32;On&#32;Validation&#32;Set.png)
+
+We can amortize the ROI using a per dollar metric. Returns are normalized by term and loan amount. This means that the dollar amount is invested equally across the available loans.
+
+![LendingClub 2016-2018 - Current Loan Amount By Grade](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Percent&#32;Positive&#32;In&#32;Confidence&#32;Threshold&#32;On&#32;Validation&#32;Set.png)
+
+We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset.
+
+### Conclusion
 
 
 ### Disclaimer
