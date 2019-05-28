@@ -90,7 +90,7 @@ Let's look at the SVM feature weights:
 
 ![LendingClub 2016-2018 - SVM Feature Weights](res/Prediction/SVM&#32;-&#32;Feature&#32;Weights.png)
 
-No surprise that borrowers with a higher annual income are more weighted towards paying back their loan. The SVC also heavily weights loan grade and subgrade. The high numeric grade or subgrade corresponds to a low grade or subgrade rating. 
+No surprise that borrowers with a higher annual income are more weighted towards paying back their loan. The SVC also heavily weights loan grade and subgrade. A high numeric grade or subgrade corresponds to a low grade or subgrade loan rating. 
 - Grade 0 corresponds to grade A 
 - Grade 6 corresponds to grade G
 
