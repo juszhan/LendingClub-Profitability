@@ -112,10 +112,11 @@ We can amortize the ROI using a per dollar metric. Returns are normalized by ter
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Percent&#32;Positive&#32;In&#32;Confidence&#32;Threshold&#32;On&#32;Validation&#32;Set.png)
 
-We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset. Values above this horizontal red line represents the degree to which model selected loans that are Fully Paid above baseline loan ratio.
+We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset. Values above this horizontal red line represents the degree to which model selected loans that are Fully Paid above baseline loan ratio. The more above the line the better.
 
 ### Conclusion
 
+Slippage? ROI does not translate to dollar amount available to invest
 
 ### Disclaimer
 
