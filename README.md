@@ -26,7 +26,7 @@ Since all loans have either a 36- or 60-month term, **Current** loans rollover q
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Verification&#32;Status&#32;Stacked&#32;Area&#32;Plot.png)
 
 Loan applicants may provide income verification to help investors better understand risk. Verification statuses are defined below:  
-- **Verified**: loan application submitted documents such as paystubs, W-2 forms, or other tax records to verify their income.
+- **Verified**: loan applicant submitted documents such as paystubs, W-2 forms, or other tax records to verify their income.
 - **Source Verified**: LendingClub electronically checked the loan applicant's income data through a third-party.
 
 More information about income verification can be found [here](https://www.lendingclub.com/investing/investor-education/income-verification).
@@ -49,7 +49,7 @@ The goal is to distinguish between **Fully Paid** or **Default**/**Charged Off**
 Below are the preprocessing steps:
 1. The quarterly loans from 2016 to 2018 are combined. We keep only the following **10** attributes: "loan_amnt", "int_rate", "term", "grade", "sub_grade", "installment", "annual_inc", "loan_status", "verification_status", and "purpose".
 2. Outliers were removed where annual income equaled 0 or greater than 1 million.
-3. Non-ordinal categorical variables were encoded into binary vectors e.g. verification status and purpose.
+3. Categorical variables were encoded into binary vectors e.g. verification status and purpose.
 4. Ordinal variables were encoded their numerical values e.g. grade and subgrade.
 
 In total, ~380k loans were Fully Paid, while ~108k loans were Default/Charged Off. 
@@ -86,14 +86,14 @@ Classification results are shown below:
 | test_score_acc       | 123 | 123           | 123           | 123               |
 | validation_score_acc | 123 | 123           | 123           | 123               |
 
-The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was going to be Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
+The trained models were then used to prediction the class probability of the validation set. This probability represented the model's confidence that a given loan was Fully Paid or Default/Charged Off. A given loan would only be invested if the predicted confidence was greater than or equaled a confidence threshold. 
 
 A confidence threshold = 0 means that we will invest in all available loans.   
 A confidence threshold = 0.5 means that we will invest in all available loans where confidence was greater than or equal to 50.
 
 ![LendingClub 2016-2018 - Total Percentage of Loans Invested On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Total&#32;Percentage&#32;of&#32;Loans&#32;Invested&#32;On&#32;Validation&#32;Set.png)
 
-As our confidence threshold approaches towards 1.0, the number of available loans for us to invest decreases.
+As our confidence threshold approaches 1.0, the number of available loans for us to invest decreases.
 
 ![LendingClub 2016-2018 - 5 Year Total ROI On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;5&#32;Year&#32;Total&#32;ROI&#32;On&#32;Validation&#32;Set.png)
 
@@ -112,11 +112,17 @@ We can amortize the ROI using a per dollar metric. Returns are normalized by ter
 
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;Percent&#32;Positive&#32;In&#32;Confidence&#32;Threshold&#32;On&#32;Validation&#32;Set.png)
 
-We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset. Values above this horizontal red line represents the degree to which model selected loans that are Fully Paid above baseline loan ratio. The more above the line the better.
+We can also check for each confidence threshold what percentage of loans were actually Fully Paid. The horizontal red line represents the ~3.5:1 ratio of Fully Paid:Default/Charged Off loans in the validation set and overall dataset. Values above this horizontal red line represents the degree to which the model selected loans that are Fully Paid above baseline loan ratio. The more above the line the better.
 
 ### Conclusion
 
-Slippage? ROI does not translate to dollar amount available to invest
+While we have shown the potential fesibility of LendingClub for an investor, futher backtesting should be employed. The results shown in the previous section do not account for external factors that could influence returns such as interest rate, employment rate, geopolitical events, and etc. These factors are important because loans offered by LendingClub are a form unsecured debt like credit card debt. When the economy weakens, unsecured debt is the first debt borrower stop repaying.
+
+In addition, the diversity and popularity of low cost ETFs provide investors with many investment options to consider. These ETFs also provide investors liquidity, which LendingClub does not. If an investor chooses to invest in LendingClub Notes, the money is tied until the end of the loan. Potential investors will need to consider this issue of liquidity.
+
+The ROI shown in the Results section does not account for the dollar amount available to invest. Further strategies should account for this available capital and test for the diversification of Notes vs. selecting quality Notes.
+
+The models can be further improved if we had a better understanding of the loan applicant's financial situation. The original dataset does include columns that help us understand just that, but many row contain null values. 
 
 ### Disclaimer
 
