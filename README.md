@@ -80,11 +80,11 @@ The best classifier was retrained on the whole training set before scoring the t
 
 Classification results are shown below:
 
-|                      | svm | decision_tree | random_forest | gradient_boosting |
-|----------------------|-----|---------------|---------------|-------------------|
-| train_score_f1       | 123 | 123           | 123           | 123               |
-| test_score_acc       | 123 | 123           | 123           | 123               |
-| validation_score_acc | 123 | 123           | 123           | 123               |
+|                      | svm   | decision_tree | random_forest | gradient_boosting |
+|----------------------|-------|---------------|---------------|-------------------|
+| train_score_f1       | 0.649 | 0.627         | 0.633         | 0.638             |
+| test_score_acc       | 0.635 | 0.637         | 0.642         | 0.643             |
+| validation_score_acc | 0.778 | 0.778         | 0.662         | 0.778             |
 
 Let's look at the SVM feature weights:
 
@@ -105,12 +105,29 @@ As our confidence threshold approaches 1.0, the number of available loans for us
 
 ![LendingClub 2016-2018 - 5 Year Total ROI On Validation Set](res/Prediction/LendingClub&#32;2016-2018&#32;-&#32;5&#32;Year&#32;Total&#32;ROI&#32;On&#32;Validation&#32;Set.png)
 
-Since all loans have either a 36- or 60-month term, we can calculate the 5-year total return on investment (ROI) as **(total_return - capital_invested) / capital_invested**, where:
+Since all loans have either a 36- or 60-month term, we can calculate the 5-year total return on investment (ROI) as **(total_return - capital_invested) / capital_invested * 100**, where:
 - capital_invested = sum(loan_amnt)
 - For Fully Paid loans, total_return += installment * term.
 - For Default/Charged Off loans, total_return += -1 * loan amount.
 
-As we approach confidence threshold = 1.0, the ROI will be more sporadic and volatile because there's less available loans to invest. Eventually, no loans are invested because no loans satisfy the confidence threshold. 
+Let's take a closer look at the decision tree near 50% 5-year ROI. Here's a loan from the set of loans that satisified the confidence threshold:
+
+| loan_amnt | int_rate | term | installment | true_class | annual_roi_percent | decision_tree_is_pos |
+|-----------|----------|------|-------------|------------|--------------------|----------------------|
+| 20000     | 18.94    | 60   | 518.16      | 1          | 11.0896            | .96                  |
+
+5-year ROI = ((518.16 * 60) - 20000) / 20000 * 100   
+5-year ROI =  (31,089.60 - 20000) / 20000 * 100   
+5-year ROI =  11089.60 / 20000 * 100   
+5-year ROI =  **55.448% **  
+
+annual ROI = 5-year ROI / 5   
+annual ROI = 55.448 / 5   
+annual ROI = **11.0896% **  
+
+As we approach confidence threshold = 1.0, the ROI will be more sporadic and volatile because there are less available loans to invest. Every loan matters more at that point. Eventually, no loans are invested because no loans satisfy the confidence threshold. 
+
+
 
 Keep in mind that calculation for the 5-year total ROI fully invests in each loan. This is important because the loan amount will vary for each loan.
 
