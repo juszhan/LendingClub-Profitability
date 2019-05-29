@@ -26,8 +26,8 @@ Since all loans have either a 36- or 60-month term, **Current** loans rollover q
 ![LendingClub 2016-2018 - Current Loan Amount By Grade](res/LendingClub&#32;2016-2018&#32;-&#32;Current&#32;Loan&#32;Amount&#32;By&#32;Verification&#32;Status&#32;Stacked&#32;Area&#32;Plot.png)
 
 Loan applicants may provide income verification to help investors better understand risk. Verification statuses are defined below:  
-- **Verified**: loan applicant submitted documents such as paystubs, W-2 forms, or other tax records to verify their income.
-- **Source Verified**: LendingClub electronically checked the loan applicant's income data through a third-party.
+- **Verified**: loan applicant submitted documents such as paystubs, W-2 forms, or other tax records to verify their income
+- **Source Verified**: LendingClub electronically checked the loan applicant's income data through a third-party
 
 More information about income verification can be found [here](https://www.lendingclub.com/investing/investor-education/income-verification).
 
@@ -90,7 +90,7 @@ Let's look at the SVM feature weights:
 
 ![LendingClub 2016-2018 - SVM Feature Weights](res/Prediction/SVM&#32;-&#32;Feature&#32;Weights.png)
 
-No surprise that borrowers with a higher annual income are more weighted towards paying back their loan. The SVC also heavily weights loan grade and subgrade. A high numeric grade or subgrade corresponds to a low grade or subgrade loan rating. 
+No surprise that borrowers with a higher annual income are more weighted towards paying back their loan. The SVC also heavily weighs loan grade, subgrade, and interest rate. A high numeric grade or subgrade corresponds to a low grade or subgrade loan rating. 
 - Grade 0 corresponds to grade A 
 - Grade 6 corresponds to grade G
 
@@ -148,6 +148,8 @@ In addition, the diversity and popularity of low-cost ETFs provide investors wit
 The ROI shown in the Results section does not account for the dollar amount available to invest. Further strategies should account for this available capital and test for the diversification of Notes vs. selecting quality Notes.
 
 The models can be further improved if we had a better understanding of the loan applicant's financial situation. The original dataset does include columns that help us understand just that, but many row contain null values. 
+
+Increasing the RandomSearchCV number of iterations could also result in a better model. The trade-off is increased computation time.
 
 ### Disclaimer
 
