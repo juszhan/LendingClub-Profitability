@@ -117,13 +117,13 @@ Let's take a closer look at the decision tree near 50% 5-year ROI. Here's a loan
 | 20000     | 18.94    | 60   | 518.16      | 1          | 11.0896            | .96                  |
 
 5-year ROI = ((518.16 * 60) - 20000) / 20000 * 100   
-5-year ROI =  (31,089.60 - 20000) / 20000 * 100   
+5-year ROI =  (31089.60 - 20000) / 20000 * 100   
 5-year ROI =  11089.60 / 20000 * 100   
-5-year ROI =  **55.448% **  
+5-year ROI =  **55.448%**  
 
 annual ROI = 5-year ROI / 5   
 annual ROI = 55.448 / 5   
-annual ROI = **11.0896% **  
+annual ROI = **11.0896%**  
 
 As we approach confidence threshold = 1.0, the ROI will be more sporadic and volatile because there are less available loans to invest. Every loan matters more at that point. Eventually, no loans are invested because no loans satisfy the confidence threshold. 
 
