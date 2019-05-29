@@ -66,7 +66,7 @@ Four classifiers were selected, the latter two being ensemble classifiers:
 - Random Forest
 - Gradient Boost
 
-An 80/20 split was created for the training/test set.
+An 80/20 split was created for the training/test set. However, the SVM used a quarter of the training set for faster computation.
 
 Since SVMs are sensitive to scaling, the data was scaled to [0, 1] using a MinMaxScaler.
 
