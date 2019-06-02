@@ -1,11 +1,15 @@
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# VSCode Workspace
+*.code-workspace
+
 # Dataset
 data/
-!data/.gitkeep
-!data/processed/.gitkeep
+!data/*.gitkeep
+!data/processed/*.gitkeep
 
 LCDataDictionary.xlsx
 
 Notes.txt
+
